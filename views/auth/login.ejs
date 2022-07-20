@@ -21,7 +21,8 @@
                     <div class="form px-3">
                         <h3 style="letter-spacing: 2px;" class="text-center text-light pt-3">LOGIN</h3>
                         <% if(err && validErr ){%>
-                        <p class="text-center text-danger "> <%= err  %></p>
+                        <p style="letter-spacing: 1; color: brown;" class="text-center  text-uppercase">
+                            <%= err  %></p>
                         <% } %>
                         <form method="post" action="/login" enctype="application/x-www-form-urlencoded">
 

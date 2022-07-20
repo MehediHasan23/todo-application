@@ -17,7 +17,7 @@
                     <h3 style="letter-spacing: 2px;" class="text-center text-light pt-3">SIGNUP</h3>
                     <div class="form px-3 ">
                         <% if(err && signErr){ %>
-                        <p class="text-center text-danger"><%= err  %> </p>
+                        <p style="letter-spacing: 1; color: brown;" class="text-center text-uppercase"><%= err  %> </p>
                         <% } %>
                         <form method="post" action="/signup" enctype="application/x-www-form-urlencoded">
                             <div class="mb-3">
