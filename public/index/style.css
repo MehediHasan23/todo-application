@@ -1,0 +1,30 @@
+body {
+  background: #282a35;
+}
+
+#btn {
+  height: 36px;
+  width: 100px;
+  margin-top: 31px;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+header {
+  height: 50px;
+}
+
+.table {
+  text-align: center !important;
+}
+table {
+  color: darkgrey;
+}
+
+label,
+table th,
+td {
+  color: #ffc0c7 !important;
+}

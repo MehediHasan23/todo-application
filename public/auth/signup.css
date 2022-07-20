@@ -1,0 +1,24 @@
+.signUp_section {
+  background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(56, 56, 56, 0.5)),
+    url("./../images/2.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp_container {
+  /* background-color: #a8ff78; */
+  background-color: #50505057;
+  opacity: 0.6;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 4px 0px !important;
+}
+
+form label {
+  letter-spacing: 2px !important;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>login</title>
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="auth/login.css">
+    </head>
+
+    <body>
+        <div class="logIn_section">
+            <div class="container">
+                <% if(msg && isSuccess){ %>
+                <h3 style="letter-spacing: 1px ; color: #E7E9EB; " class="text-center  mb-3"><%= msg.slice(0,27) %></h3>
+                <h5 style="letter-spacing: 1px ; color: #E7E9EB;" class="text-center  mb-3"><%= msg.slice(27,40) %></h5>
+                <% } %>
+                <div class="logIn_container rounded">
+                    <div class="form px-3">
+                        <h3 style="letter-spacing: 2px;" class="text-center text-light pt-3">LOGIN</h3>
+                        <% if(err && validErr ){%>
+                        <p class="text-center text-danger "> <%= err  %></p>
+                        <% } %>
+                        <form method="post" action="/login" enctype="application/x-www-form-urlencoded">
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1"
+                                    class="form-label <%= validErr? 'text-danger' : 'text-light'  %> ">Email</label>
+                                <input type="email"
+                                    class="form-control <%= err && emailErr || validErr? 'border-danger' : ''   %> "
+                                    id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                                    value="<%= err ? email : ''  %> ">
+                                <% if(err && emailErr){ %>
+                                <p class="text-danger"><%=err%> </p>
+                                <% } %>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1"
+                                    class="form-label <%= validErr? 'text-danger' : 'text-light'  %>">Password</label>
+                                <input type="password" class="form-control  
+                            <%= err && passErr || validErr? 'border-danger ': '' %>" id="exampleInputPassword1"
+                                    name="password">
+                                <% if(err && passErr){ %>
+                                <p class="text-danger"><%=err%> </p>
+                                <% } %>
+                            </div>
+                            <button style="letter-spacing: 2px;" type="submit"
+                                class="btn  w-100 <%= validErr?'btn-danger':'btn-light'  %> ">SIGN IN</button>
+                            <p style="letter-spacing: 1px;" class="text-center text-light mt-1">NEW USER? <a
+                                    style="text-decoration: none;" href="/signup">SIGNUP</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
