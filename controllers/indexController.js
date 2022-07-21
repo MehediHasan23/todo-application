@@ -7,8 +7,8 @@ const indexController = async (req, res) => {
   try {
     const tasks = await Todo.find({ user: req.email });
     const user = await User.findOne({ email: req.email });
-
-    res.render("index", { tasks, name: user.name });
+    let name = user? user.name : "Anonymous";
+    res.render("index", { tasks, name });
   } catch (error) {
     throw error;
   }
