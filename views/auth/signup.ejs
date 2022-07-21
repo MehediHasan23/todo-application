@@ -25,7 +25,8 @@
                                     class="form-label <%= err && signErr ? 'text-danger': 'text-light'  %>">
                                     Name</label>
                                 <input type="text" class="form-control <%= err && signErr ? 'border-danger': ''  %>"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+                                    id="exampleInputEmail1" aria-describedby="emailHelp" name="name"
+                                    value="<%= existErr? name: ''  %>">
 
                             </div>
                             <div class="mb-3">
@@ -37,7 +38,8 @@
                                 <% } %>
                                 <input type="email"
                                     class="form-control <%= err && signErr ||existErr ? 'border-danger': ''  %>"
-                                    id="email" aria-describedby="emailHelp" name="email">
+                                    id="email" aria-describedby="emailHelp" name="email"
+                                    value="<%= existErr? email: ''  %>">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1"

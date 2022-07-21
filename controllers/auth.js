@@ -11,7 +11,13 @@ const authHandler = {};
 /* signup router */
 authHandler.signupRoute = (req, res) => {
   try {
-    res.render(`auth/signup`, { err: null, signErr: false, existErr: false });
+    res.render(`auth/signup`, {
+      err: null,
+      signErr: false,
+      existErr: false,
+      name: null,
+      email: null,
+    });
   } catch (error) {
     throw error;
   }
@@ -25,7 +31,9 @@ authHandler.signupHandler = async (req, res) => {
       res.render("auth/signup", {
         err: `Please give valid data`,
         signErr: true,
-        existErr: true,
+        existErr: false,
+        name: null,
+        email: null,
       });
     } else {
       const isExist = await User.findOne({ email });
@@ -34,6 +42,8 @@ authHandler.signupHandler = async (req, res) => {
           err: `USER ALREADY EXISTS`,
           signErr: false,
           existErr: true,
+          name,
+          email,
         });
       } else {
         const user = new User({
