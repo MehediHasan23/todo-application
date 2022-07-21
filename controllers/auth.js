@@ -11,7 +11,7 @@ const authHandler = {};
 /* signup router */
 authHandler.signupRoute = (req, res) => {
   try {
-    res.render(`auth/signup`, { err: null, signErr: false });
+    res.render(`auth/signup`, { err: null, signErr: false, existErr: false });
   } catch (error) {
     throw error;
   }
@@ -25,24 +25,34 @@ authHandler.signupHandler = async (req, res) => {
       res.render("auth/signup", {
         err: `Please give valid data`,
         signErr: true,
+        existErr: true,
       });
     } else {
-      const user = new User({
-        name,
-        email,
-        password: await passHash(password),
-      });
-      const result = await user.save();
-      if (result) {
-        res.render(`auth/login`, {
-          err: null,
-          email: null,
-          emailErr: false,
-          passErr: false,
-          validErr: false,
-          msg: `SIGNUP SUCCESSFULLY DONE ✅ PLEASE LOGIN`,
-          isSuccess: true,
+      const isExist = await User.findOne({ email });
+      if (isExist) {
+        return res.render("auth/signup", {
+          err: `USER ALREADY EXISTS`,
+          signErr: false,
+          existErr: true,
         });
+      } else {
+        const user = new User({
+          name,
+          email,
+          password: await passHash(password),
+        });
+        const result = await user.save();
+        if (result) {
+          res.render(`auth/login`, {
+            err: null,
+            email: null,
+            emailErr: false,
+            passErr: false,
+            validErr: false,
+            msg: `SIGNUP SUCCESSFULLY DONE ✅ PLEASE LOGIN`,
+            isSuccess: true,
+          });
+        }
       }
     }
   } catch (error) {
@@ -142,3 +152,21 @@ authHandler.logoutHandler = (req, res) => {
 };
 
 module.exports = authHandler;
+
+/* const user = new User({
+  name,
+  email,
+  password: await passHash(password),
+});
+const result = await user.save();
+if (result) {
+  res.render(`auth/login`, {
+    err: null,
+    email: null,
+    emailErr: false,
+    passErr: false,
+    validErr: false,
+    msg: `SIGNUP SUCCESSFULLY DONE ✅ PLEASE LOGIN`,
+    isSuccess: true,
+  });
+} */

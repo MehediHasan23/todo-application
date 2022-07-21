@@ -16,6 +16,7 @@ const authChecker = async (req, res, next) => {
         return res.render(`auth/signup`, {
           err: null,
           signErr: false,
+          existErr: false,
         });
       }
       res.render(`auth/login`, {
@@ -34,6 +35,7 @@ const authChecker = async (req, res, next) => {
         return res.render(`auth/signup`, {
           err: null,
           signErr: false,
+          existErr: false,
         });
       }
       res.render(`auth/login`, {

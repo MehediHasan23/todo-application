@@ -29,12 +29,15 @@
 
                             </div>
                             <div class="mb-3">
+
                                 <label for="email"
                                     class="form-label <%= err && signErr ? 'text-danger': 'text-light'  %>">Email</label>
-                                <input type="email" class="form-control <%= err && signErr ? 'border-danger': ''  %>"
+                                <% if(err && existErr){ %>
+                                <p style="letter-spacing: 1px;" class=" text-warning mt-1"><%= err %></p>
+                                <% } %>
+                                <input type="email"
+                                    class="form-control <%= err && signErr ||existErr ? 'border-danger': ''  %>"
                                     id="email" aria-describedby="emailHelp" name="email">
-
-
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1"
