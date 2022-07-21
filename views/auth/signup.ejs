@@ -34,7 +34,7 @@
                                 <label for="email"
                                     class="form-label <%= err && signErr ? 'text-danger': 'text-light'  %>">Email</label>
                                 <% if(err && existErr){ %>
-                                <p style="letter-spacing: 1px;" class=" text-warning mt-1"><%= err %></p>
+                                <p style="letter-spacing: 1px;" class=" text-danger mt-1"><%= err %></p>
                                 <% } %>
                                 <input type="email"
                                     class="form-control <%= err && signErr ||existErr ? 'border-danger': ''  %>"
